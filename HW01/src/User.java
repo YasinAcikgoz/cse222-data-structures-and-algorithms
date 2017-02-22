@@ -7,6 +7,7 @@ public class User {
     private String name;
     private String userName;
     private String password;
+
     public User(String name, String userName, String password){
 
         if(name !=null || userName!=null || password !=null){
@@ -42,6 +43,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "name: " + getName() + " userName: " + getUserName() + " password: " + getPassword();
+        return getName() + ";" + getUserName() + ";" + getPassword();
     }
 }

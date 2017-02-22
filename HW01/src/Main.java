@@ -14,14 +14,20 @@ import java.util.ArrayList;
 public class Main {
 
 
-    public static void main(String [] args){
+    public static void main(String [] args) throws IOException {
         final String booksFile = "src/data/Books.csv";
         final String usersFile = "src/data/Users.csv";
 
       //  readFile(usersFile);
         LibraryStaff libraryStaff = new LibraryStaff();
         Book book = new Book("fafa", "adas", "afasa");
-        libraryStaff.addBook(book);
+        ArrayList <Book> books = libraryStaff.addBookToDB(book);
+        printBooks(books);
+
+    }
+    public static void printBooks(ArrayList <Book> books){
+        for(int i = 0; i<books.size(); ++i)
+            System.out.println(books.get(i).toString());
     }
 
 }
