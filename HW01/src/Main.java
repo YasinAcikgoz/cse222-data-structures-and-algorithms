@@ -23,6 +23,23 @@ public class Main {
 
         user = new LibraryStaff("yasin", "yacikgoz", "123456");
         LibraryStaff libraryStaff = new LibraryStaff("yasin", "yacikgoz", "123456");
+        LibraryUser libraryUser1 = new LibraryUser("ferhat", "fero", "111112");
+        LibraryUser libraryUser2 = new LibraryUser("osman", "superosman", "112");
+        Book book = new Book("absolute c++", "savitch");
+        Book book1 = new Book("data structures", "koffman");
+        libraryStaff.addUser(libraryUser1);
+        libraryStaff.addUser(libraryUser2);
+        libraryStaff.addBook(book1);
+        libraryStaff.addBook(book);
+
+        libraryUser1.barrowBook(2);
+        libraryUser2.barrowBook(1);
+        if(user instanceof LibraryStaff){
+            user.promptMenu();
+        } else if( user instanceof LibraryUser){
+            user.promptMenu();
+        }
+
 /*    if(user instanceof LibraryStaff){
             System.out.println("STAFF");
         } else if( user instanceof LibraryUser){

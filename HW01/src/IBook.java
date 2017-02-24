@@ -11,6 +11,6 @@ public interface IBook {
     ArrayList <Book>  removeBook(int id) throws IOException;
     ArrayList <Book>  updateBook(Book oldBook, Book newBook) throws IOException;
     ArrayList <Book>  barrowBook(int id) throws IOException;
-    ArrayList <Book>  returnBook(Book book);
+    ArrayList <Book>  returnBook(int id) throws IOException;
 
 }

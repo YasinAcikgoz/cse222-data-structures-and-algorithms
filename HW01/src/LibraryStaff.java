@@ -14,6 +14,7 @@ public class LibraryStaff extends User implements IBook, IUser{
     public LibraryStaff(String name, String userName, String password){
         super(name, userName, password);
     }
+
     @Override
     public ArrayList <Book>  addBook(Book book) throws IOException {
         bookList = readBookFile(staffMode);
@@ -78,7 +79,7 @@ public class LibraryStaff extends User implements IBook, IUser{
     }
 
     @Override
-    public ArrayList<Book>  returnBook(Book book) {
+    public ArrayList<Book>  returnBook(int id) {
 
         return null;
     }
@@ -115,5 +116,10 @@ public class LibraryStaff extends User implements IBook, IUser{
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    @Override
+    void promptMenu() {
+        System.out.println("LibraryStaff.promptMenu");
     }
 }
