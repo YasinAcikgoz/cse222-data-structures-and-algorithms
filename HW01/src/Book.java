@@ -9,16 +9,6 @@ public class Book{
     private int id;
     private boolean availability;
 
-
-    public boolean getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
-    }
-
-
     /**
      * get name class member
      * @return kitap adi
@@ -67,14 +57,53 @@ public class Book{
         this.id = id;
     }
 
-    public Book(String name, String author){
+    /**
+     * get availability class member
+     * @return availability
+     */
+    public boolean getAvailability() {
+        return availability;
+    }
+
+    /**
+     * set availability class member
+     * @param availability kullanilabilirlik
+     */
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+    /**
+     * book constructor
+     * @param name kitap ismi
+     * @param author yazar ismi
+     * @param status kitabin kullanilabilirligi
+     */
+    public Book(String name, String author, boolean status){
         setName(name);
         setAuthor(author);
-        setAvailability(true);
+        setAvailability(status);
     }
+
+    /**
+     * toString metodu
+     * @return obje bilgisi
+     */
     @Override
     public String toString() {
         return getName() + ";" + getAuthor() + ";" + getId() + ";" + getAvailability();
+    }
 
+    /**
+     * kitap bilgilerini ekrana basan metod
+     * @return kitap objesi stringi
+     */
+    public String printBook(){
+        String temp =  "ID: " + getId() + " Name: " + getName() + " Author: " + getAuthor();
+        if(getAvailability()){
+            temp += " -> Available";
+        } else
+            temp += " -> Not Available";
+        return temp;
     }
 }
