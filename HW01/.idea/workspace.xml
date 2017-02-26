@@ -29,109 +29,7 @@
     <favorites_list name="HW01" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AbstractUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AbstractUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="91" column="51" lean-forward="false" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#writeBooks#0;class#AbstractUser#0" expanded="false" />
-                <element signature="method#writeUsers#0;class#AbstractUser#0" expanded="false" />
-                <element signature="method#readBookFile#0;class#AbstractUser#0" expanded="false" />
-                <element signature="method#checkBookId#0;class#AbstractUser#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Book.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="115" column="22" lean-forward="false" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
-              <folding>
-                <element signature="method#printBook#0;class#Book#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IBook.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IBook.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="40" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IUserOperations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IUserOperations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="21" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Library.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Library.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LibraryStaff.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LibraryStaff.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1598">
-              <caret line="96" column="28" lean-forward="true" selection-start-line="96" selection-start-column="28" selection-end-line="96" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LibraryUser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/LibraryUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="160" column="19" lean-forward="false" selection-start-line="160" selection-start-column="19" selection-end-line="160" selection-end-column="19" />
-              <folding>
-                <element signature="docComment;method#returnBook#0;class#LibraryUser#0" expanded="false" />
-                <element signature="docComment;method#refreshDatabase#0;class#LibraryUser#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-              <folding>
-                <element signature="method#User#0;class#User#0" expanded="false" />
-                <element signature="method#User#1;class#User#0" expanded="false" />
-                <element signature="method#User#2;class#User#0" expanded="false" />
-                <element signature="e#3116#3117#0" expanded="true" />
-                <element signature="e#3186#3187#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -177,13 +75,13 @@
         <option value="$PROJECT_DIR$/src/data/3_books.csv" />
         <option value="$PROJECT_DIR$/src/data/1_books.csv" />
         <option value="$PROJECT_DIR$/src/data/Users.csv" />
-        <option value="$PROJECT_DIR$/src/data/Books.csv" />
         <option value="$PROJECT_DIR$/src/Book.java" />
         <option value="$PROJECT_DIR$/src/User.java" />
         <option value="$PROJECT_DIR$/src/LibraryUser.java" />
         <option value="$PROJECT_DIR$/src/AbstractUser.java" />
         <option value="$PROJECT_DIR$/src/LibraryStaff.java" />
         <option value="$PROJECT_DIR$/src/Library.java" />
+        <option value="$PROJECT_DIR$/src/data/Books.csv" />
       </list>
     </option>
   </component>
@@ -292,24 +190,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HW01" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HW01" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -762,12 +642,12 @@
       <workItem from="1488102903084" duration="636000" />
       <workItem from="1488103950171" duration="8303000" />
       <workItem from="1488114087207" duration="242000" />
-      <workItem from="1488119647747" duration="6049000" />
+      <workItem from="1488119647747" duration="6230000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81799000" />
+    <option name="totallyTimeSpent" value="81980000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -779,8 +659,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -797,7 +677,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19160305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19160305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1239,44 +1119,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Books.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/Users.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="115" column="22" lean-forward="false" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
-          <folding>
-            <element signature="method#printBook#0;class#Book#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IBook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="40" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IUserOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="21" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -1295,26 +1141,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AbstractUser.java">
+    <entry file="file://$PROJECT_DIR$/src/data/Books.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="91" column="51" lean-forward="false" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#writeBooks#0;class#AbstractUser#0" expanded="false" />
-            <element signature="method#writeUsers#0;class#AbstractUser#0" expanded="false" />
-            <element signature="method#readBookFile#0;class#AbstractUser#0" expanded="false" />
-            <element signature="method#checkBookId#0;class#AbstractUser#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Library.java">
+    <entry file="file://$PROJECT_DIR$/src/LibraryUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
+        <state relative-caret-position="718">
+          <caret line="160" column="19" lean-forward="false" selection-start-line="160" selection-start-column="19" selection-end-line="160" selection-end-column="19" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#returnBook#0;class#LibraryUser#0" expanded="false" />
+            <element signature="docComment;method#refreshDatabase#0;class#LibraryUser#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1329,13 +1170,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LibraryUser.java">
+    <entry file="file://$PROJECT_DIR$/src/Library.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="160" column="19" lean-forward="false" selection-start-line="160" selection-start-column="19" selection-end-line="160" selection-end-column="19" />
+        <state relative-caret-position="208">
+          <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
           <folding>
-            <element signature="docComment;method#returnBook#0;class#LibraryUser#0" expanded="false" />
-            <element signature="docComment;method#refreshDatabase#0;class#LibraryUser#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IUserOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="21" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IBook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="40" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="115" column="22" lean-forward="false" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
+          <folding>
+            <element signature="method#printBook#0;class#Book#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AbstractUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="91" column="51" lean-forward="false" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#writeBooks#0;class#AbstractUser#0" expanded="false" />
+            <element signature="method#writeUsers#0;class#AbstractUser#0" expanded="false" />
+            <element signature="method#readBookFile#0;class#AbstractUser#0" expanded="false" />
+            <element signature="method#checkBookId#0;class#AbstractUser#0" expanded="false" />
           </folding>
         </state>
       </provider>
