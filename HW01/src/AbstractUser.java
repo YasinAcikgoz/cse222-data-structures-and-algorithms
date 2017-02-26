@@ -89,7 +89,7 @@ public abstract class AbstractUser {
      * @param list user listesi
      * @throws IOException exception
      */
-    protected void writeUsers(ArrayList <User> list, boolean status) throws IOException {
+    protected void writeUsers(ArrayList <User> list) throws IOException {
         try {
             String usersFile = "src/data/Users.csv";
             PrintWriter writer = new PrintWriter(new FileWriter(usersFile));

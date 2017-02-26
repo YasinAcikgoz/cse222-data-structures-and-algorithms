@@ -116,16 +116,6 @@ public class LibraryUser extends User implements IBook{
         }
         else
             System.out.println("Wrong book ID!!!");
-       /* if(bookID <= bookList.size()){
-            if(!bookList.get(bookID).getAvailability() && id>=0){
-                refreshDatabase(false, bookList.get(bookID), userID, myBooks, bookID);
-            } else{
-                System.out.println("This book can not return.");
-            }
-            writeBooks(bookList);
-        } else {
-            System.out.println("Wrong book ID!!!");
-        }*/
         return bookList;
     }
 
@@ -165,6 +155,12 @@ public class LibraryUser extends User implements IBook{
         }
         writer.close();
     }
+    /**
+     * kitap indexini return eden metod
+     * @param list kitap listesi
+     * @param book kitap objesi
+     * @return index
+     */
     private int getBookIndex(ArrayList <Book> list, Book book){
         for (int i=0 ;i<list.size(); ++i)
             if(list.get(i).equals(book)){
@@ -172,6 +168,13 @@ public class LibraryUser extends User implements IBook{
             }
         return -1;
     }
+
+    /**
+     * kitap objesi return eden fonksiyon
+     * @param id kitap idsi
+     * @param list kitap listesi
+     * @return kitap objesi
+     */
     private Book getBookFromID(int id, ArrayList <Book> list){
         for (int i=0 ;i<list.size(); ++i)
             if(list.get(i).getId() == id){
@@ -179,6 +182,4 @@ public class LibraryUser extends User implements IBook{
             }
         return null;
     }
-
-
 }

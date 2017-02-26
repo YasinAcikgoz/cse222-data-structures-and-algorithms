@@ -127,6 +127,7 @@ public class User extends AbstractUser{
      */
     public String printUser(){ return "Name: " + getName() +  "\tID: " + getId() + "\tUsername: " + getUserName() + "\tPassword: " + getPassword() + "\tUserType: " + getType(); }
 
+
     @Override
     public boolean equals(Object obj) {
         return Objects.equals(this.toString(), obj.toString());

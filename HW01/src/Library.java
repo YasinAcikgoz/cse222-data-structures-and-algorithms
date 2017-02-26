@@ -36,11 +36,7 @@ public class Library {
                 username = scanInput.nextLine();
                 System.out.print("Enter your password > ");
                 password = scanInput.nextLine();
-                /*username = "admin";
-                password = "123456";*/
-               /* username = "yacikgoz";
-                password = "1111";*/
-               // System.out.println("username: " + username + " password: " + password);
+
                 userID = checkUser(username, password);
                 System.out.println("Dear " + username  +", welcome to the GTÜ Library.");
                 userIndex = getUserIndex(username, password);
@@ -204,8 +200,10 @@ public class Library {
     }
 
     /**
+     /**
      * veri tabanindaki kitaplari ekrana basan fonksiyon
      * @param books kitap listesi
+     * @return boolean
      */
     public static boolean printBooks(ArrayList <Book> books){
         if(books!=null){
@@ -247,6 +245,13 @@ public class Library {
         }
         return -1;
     }
+
+    /**
+     * kullanicinin kullanici listesindeki indexini return eder
+     * @param username kullanici adi
+     * @param password sifre
+     * @return index
+     */
     public static int getUserIndex(String username, String password){
         for(int i = 0; i < users.size(); ++i){
             if(users.get(i).getUserName().equals(username) && users.get(i).getPassword().equals(password) ){
@@ -255,6 +260,11 @@ public class Library {
         }
         return -1;
     }
+    /**
+     * kullanicinin aldigi kitaplari listeler
+     * @param books kitap listesi
+     * @return boolean
+     */
     public static boolean listUserBooks(ArrayList <Book> books){
         if(books!=null){
             System.out.println("-----------YOUR BOOKS------------");
@@ -268,7 +278,11 @@ public class Library {
             return false;
         }
     }
-
+    /**
+     * kullanicinin alabilecegi kitaplari listeler
+     * @param books kitap listesi
+     * @return boolean
+     */
     public static boolean listAvailableBooks(ArrayList <Book> books){
         if(books != null){
             System.out.println("---------AVAILABLE BOOKS---------");
@@ -284,6 +298,12 @@ public class Library {
             return false;
         }
     }
+
+    /**
+     * kullanici adi verilen kullanıcının sistemde olup olmadigin kontrol eden fonksiyon
+     * @param username kullanici adi
+     * @return boolean
+     */
     private static boolean checkUser(String username){
         for(int i=0 ; i< users.size(); ++i){
             if(users.get(i).getUserName().equals(username)){

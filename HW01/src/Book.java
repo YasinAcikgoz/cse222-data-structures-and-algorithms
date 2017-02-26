@@ -109,6 +109,12 @@ public class Book{
             temp += " -> Not Available";
         return temp;
     }
+
+    /**
+     * equals metodu
+     * @param obj obje
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         return Objects.equals(this.toString(), obj.toString());

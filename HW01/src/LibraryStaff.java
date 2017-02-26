@@ -96,7 +96,7 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
         user.setId(max);
         if(checkUser(user)){
             userList.add(user);
-            writeUsers(userList, true);
+            writeUsers(userList);
             System.out.println(user.getUserName() + " added to database.");
         } else{
             System.out.println("The user you want to add already exists.");
@@ -123,7 +123,7 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
                 System.out.println("This user cannot delete from database because of borrow book.");
             } else {
                 userList.remove(user);
-                writeUsers(userList, false);
+                writeUsers(userList);
                 System.out.println(user.getName() + " deleted from database.");
             }
         } else{
@@ -145,7 +145,6 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
         }
         return true;
     }
-
     /**
      * Kullaniciya yapabilecegi islemleri gösteren ve komut alan metod
      * @return seçilen komut
@@ -161,6 +160,11 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
         command = scanInput.nextLine();
         return command;
     }
+    /**
+     * bos olan user id'sini return eder
+     * @param list user listesi
+     * @return id
+     */
     private int getMaxUserID(ArrayList<User> list){
         int max=0;
         for(int i=0; i<list.size(); ++i){
@@ -170,6 +174,11 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
         }
         return max+1;
     }
+    /**
+     * bos olan kitap id'sini return eder
+     * @param list kitap listesi
+     * @return id
+     */
     private int getMaxBookID(ArrayList<Book> list){
         int max=0;
         for(int i=0; i<list.size(); ++i){
@@ -179,10 +188,14 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
         }
         return max+1;
     }
+    /**
+     * user id'sini alarak user objesi return eden metot
+     * @param id user idsi
+     * @return user objesi
+     */
     private User getUserFromID(int id){
         for(int i=0; i<userList.size(); ++i){
             if(id == userList.get(i).getId()){
-
                 return userList.get(i);
             }
         }
