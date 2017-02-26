@@ -42,6 +42,7 @@ public class Library {
                 password = "1111";*/
                // System.out.println("username: " + username + " password: " + password);
                 userID = checkUser(username, password);
+                System.out.println("Dear " + username  +", welcome to the GTÜ Library.");
                 userIndex = getUserIndex(username, password);
                 if(userID >=0){
                     if(users.get(userIndex).getType().equals("staff")){
@@ -59,8 +60,10 @@ public class Library {
             if(user instanceof LibraryStaff){
                 command = user.promptMenu();
                 Scanner scanInput = new Scanner(System.in);
-                if(command.equals("q"))
+                if(command.equals("q")){
+                    System.out.println("You logout from system.");
                     System.exit(0);
+                }
                 else if(command.equals("lu")){
                     printUsers();
                 } else if(command.equals("lb")){
@@ -148,8 +151,10 @@ public class Library {
                 ArrayList <Book> myBooks;
                 Scanner scanInput = new Scanner(System.in);
                 command = user.promptMenu();
-                if(command.equals("q"))
+                if(command.equals("q")){
+                    System.out.println("You logout from system.");
                     System.exit(0);
+                }
                 else if(command.equals("bb")){
                     printBooks(books);
                     System.out.print("Enter book ID to barrow > ");
