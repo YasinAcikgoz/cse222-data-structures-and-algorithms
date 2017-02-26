@@ -1,9 +1,10 @@
-import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
- * Created by yacikgoz on 20.02.2017.
+ * AbstractUser sinifindan extend olan User sinifi
+ *
  */
 public class User extends AbstractUser{
     private String type;
@@ -108,40 +109,26 @@ public class User extends AbstractUser{
      */
     @Override
     protected String promptMenu() {
-        return " q -> quit\n";
+        return " lb -> list books\n" +  "  q -> quit\n";
     }
+
+    /**
+     * toString metodu
+     * @return kullanici bilgisi
+     */
     @Override
     public String toString() {
         return getName() + ";" + getUserName() + ";" + getPassword() + ";" + getType() + ";" + getId();
     }
-    public String printUser(){ return "Name: " + getName() +  "\tID: " + getId() + "\tUsername: " + getUserName() + "\tPassword: " + getPassword() + "\tUserType: " + getType(); }
-    protected void writeBooks(ArrayList <Book> list) throws IOException {
-        String booksFile = "src/data/Books.csv";
-        PrintWriter writer = new PrintWriter(new FileWriter(booksFile));
-        for(int i=0; i<list.size(); ++i){
-            list.get(i).setId(i);
-            writer.println(list.get(i).toString());
-        }
-        writer.close();
-    }
-    protected void writeUsers(ArrayList <User> list) throws IOException {
-        String usersFile = "src/data/Users.csv";
-        PrintWriter writer = new PrintWriter(new FileWriter(usersFile));
-        for(int i=0; i<list.size(); ++i){
-            list.get(i).setId(i);
-            writer.println(list.get(i).toString());
-        }
-        writer.close();
-    }
-    protected int getBookId(Book book, ArrayList<Book> list){
-        for(int i=0; i<list.size(); ++i){
-            //  System.out.println("idnum: " + bookList.get(i).getId());
-            if(list.get(i).toString().equals(book.toString())){
-                // System.out.println("delete: " + bookList.get(i).toString());
-                return i;
-            }
-        }
-        return -1;
-    }
 
+    /**
+     * kullanici bilgilerini ekrana basan fonksiyon
+     * @return kullanici bilgisi
+     */
+    public String printUser(){ return "Name: " + getName() +  "\tID: " + getId() + "\tUsername: " + getUserName() + "\tPassword: " + getPassword() + "\tUserType: " + getType(); }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.toString(), obj.toString());
+    }
 }

@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 /**
  *
- * Created by yacikgoz on 20.02.2017.
+ * User'dan extend olup IBook interface'ini implement eden LibraryStaff sinifi
+ *
  */
 public class LibraryStaff extends User implements IBook, IUserOperations {
     private final int staffMode=-1;
@@ -25,11 +26,12 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
     @Override
     public ArrayList <Book>  addBook(Book book) throws IOException {
         bookList = readBookFile(staffMode);
+        int max = getMaxBookID(bookList);
+        book.setId(max);
         book.setAvailability(true);
-        book.setId(bookList.size()+1);
         bookList.add(book);
         writeBooks(bookList);
-        System.out.println(book.printBook() + " added.");
+        System.out.println(book.getName()+ " added to database.");
         return bookList;
     }
     /**
@@ -50,7 +52,7 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
         } else{
             bookList.remove(book);
             writeBooks(bookList);
-            System.out.println(book.printBook() + " deleted.");
+            System.out.println(book.getName() + " book deleted from database.");
         }
         return bookList;
     }
@@ -62,7 +64,7 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
      * @throws IOException exception
      */
     @Override
-    public ArrayList<Book> barrowBook(int bookID, int userID) throws IOException {
+    public ArrayList<Book> borrowBook(int bookID, int userID) throws IOException {
         return null;
     }
     /**
@@ -90,11 +92,12 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
     @Override
     public ArrayList<User> addUser(User user) throws IOException {
         userList = readUserFile();
-        user.setId(userList.size()+1);
+        int max = getMaxUserID(userList);
+        user.setId(max);
         if(checkUser(user)){
             userList.add(user);
-            writeUsers(userList);
-            System.out.println(user.getName() + " added to database.");
+            writeUsers(userList, true);
+            System.out.println(user.getUserName() + " added to database.");
         } else{
             System.out.println("The user you want to add already exists.");
         }
@@ -110,14 +113,19 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
     @Override
     public ArrayList<User> deleteUser(int id) throws IOException {
         userList = readUserFile();
-        User user = null;
-        if (userList.size()>id)
-            user = userList.get(id);
+        User user;
+        String fileName = "src/data/" + id + "_books.csv";
+        user = getUserFromID(id);
 
         if(user!=null){
-            userList.remove(user);
-            writeUsers(userList);
-            System.out.println(user.getName() + " deleted from database.");
+            File f = new File(fileName);
+            if(f.exists() && !f.isDirectory()){
+                System.out.println("This user cannot delete from database because of borrow book.");
+            } else {
+                userList.remove(user);
+                writeUsers(userList, false);
+                System.out.println(user.getName() + " deleted from database.");
+            }
         } else{
             System.out.println("The user you want to delete not in database.");
         }
@@ -146,11 +154,38 @@ public class LibraryStaff extends User implements IBook, IUserOperations {
     protected String promptMenu() {
         Scanner scanInput = new Scanner(System.in);
         String command;
-        String prompt = "------------------------\n" + "au -> add user\n" + "du -> delete user\n" +
-                "ab -> add book\n" + "db -> delete book\n"+ "lb -> list books\n" + "lu -> list users\n" + super.promptMenu() +
+        String prompt = "------------------------\n" + " au -> add user\n" + " du -> delete user\n" +
+                " ab -> add book\n" + " db -> delete book\n"+ " lu -> list users\n" + super.promptMenu() +
                 "------------------------\n" + "Please enter a command > ";
         System.out.print(prompt);
         command = scanInput.nextLine();
         return command;
+    }
+    private int getMaxUserID(ArrayList<User> list){
+        int max=0;
+        for(int i=0; i<list.size(); ++i){
+            if(list.get(i).getId()>max){
+                max = list.get(i).getId();
+            }
+        }
+        return max+1;
+    }
+    private int getMaxBookID(ArrayList<Book> list){
+        int max=0;
+        for(int i=0; i<list.size(); ++i){
+            if(list.get(i).getId()>max){
+                max = list.get(i).getId();
+            }
+        }
+        return max+1;
+    }
+    private User getUserFromID(int id){
+        for(int i=0; i<userList.size(); ++i){
+            if(id == userList.get(i).getId()){
+
+                return userList.get(i);
+            }
+        }
+        return null;
     }
 }

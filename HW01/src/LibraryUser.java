@@ -1,10 +1,12 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * library user sinifi
- * Created by yacikgoz on 20.02.2017.
+ *
+ * User'dan extend olup IBook interface'ini implement eden LibraryUser sinifi
+ *
  */
 
 public class LibraryUser extends User implements IBook{
@@ -18,8 +20,8 @@ public class LibraryUser extends User implements IBook{
     protected String promptMenu() {
         Scanner scanInput = new Scanner(System.in);
         String command;
-        String prompt = "------------------------\n" + "bb -> barrow book\n" + "rb -> return book\n" +
-                "lmb -> list my books\n" + "lb -> list available books\n" + super.promptMenu() +
+        String prompt = "------------------------\n" + " bb -> barrow book\n" + " rb -> return book\n" +
+                "lmb -> list my books\n" + "lab -> list available books\n" + super.promptMenu() +
                 "------------------------\n" + "Please enter a command > ";
         System.out.print(prompt);
         command = scanInput.nextLine();
@@ -72,18 +74,17 @@ public class LibraryUser extends User implements IBook{
      * @throws IOException exception
      */
     @Override
-    public ArrayList<Book>  barrowBook(int bookID, int userID) throws IOException {
+    public ArrayList<Book> borrowBook(int bookID, int userID) throws IOException {
         bookList = readBookFile(userMode);
-        System.out.println("index: " + bookID + " bookList: " + bookList.toString());
+        ArrayList <Book> myBooks = readBookFile(userID);
         Book book = checkBookId(bookID, bookList);
         if(book==null){
             System.out.println("This book is not in the database.");
         } else if(book.getAvailability()){
-            bookList.get(bookID).setAvailability(false);
-            System.out.println("BOOK: " + bookList.get(bookID).printBook());
-            refreshDatabase(true, bookList.get(bookID), userID);
+            book.setAvailability(false);
+            refreshDatabase(true, book, userID, myBooks, bookID);
         } else{
-            System.out.println("This book can not be borrowed because it is borrowed to another user.");
+            System.out.println("This book can not borrowed.");
         }
         writeBooks(bookList);
         return bookList;
@@ -98,16 +99,34 @@ public class LibraryUser extends User implements IBook{
     @Override
     public ArrayList<Book>  returnBook(int bookID, int userID) throws IOException {
         bookList = readBookFile(userMode);
-        System.out.println("index: " + bookID + " bookList: " + bookList.toString());
-        if(!bookList.get(bookID).getAvailability()){
-            bookList.get(bookID).setAvailability(true);
-            refreshDatabase(false, bookList.get(bookID), userID);
-        } else{
+        ArrayList <Book> myBooks = readBookFile(userID);
 
+        //
+        Book book = getBookFromID(bookID, bookList);
+        int index = getBookIndex(myBooks, book);
+        if(index>-1){
+            if(myBooks.get(index).equals(book)){
+                if(!book.getAvailability() && id>=0){
+                    refreshDatabase(false, book, userID, myBooks, bookID);
+                } else{
+                    System.out.println("This book can not return.");
+                }
+                writeBooks(bookList);
+            }
         }
-        writeBooks(bookList);
-
-        return null;
+        else
+            System.out.println("Wrong book ID!!!");
+       /* if(bookID <= bookList.size()){
+            if(!bookList.get(bookID).getAvailability() && id>=0){
+                refreshDatabase(false, bookList.get(bookID), userID, myBooks, bookID);
+            } else{
+                System.out.println("This book can not return.");
+            }
+            writeBooks(bookList);
+        } else {
+            System.out.println("Wrong book ID!!!");
+        }*/
+        return bookList;
     }
 
     /**
@@ -117,21 +136,49 @@ public class LibraryUser extends User implements IBook{
      * @param userID kullanici id'si
      * @throws IOException exception
      */
-    private void refreshDatabase(boolean status, Book book, int userID) throws IOException {
+    private void refreshDatabase(boolean status, Book book, int userID, ArrayList <Book> list, int bookID) throws IOException {
         String fileName = "src/data/" +  userID + "_books.csv";
         PrintWriter writer = new PrintWriter(new FileWriter(fileName));
-        ArrayList <Book> list = readBookFile(userID);
-        if(status)
-            list.add(book);
-        else
-            list.remove(book);
+        if(status){
+            if(list ==null){
+                list = new ArrayList<Book>();
+                book.setAvailability(false);
+                list.add(book);
+            } else{
+                book.setAvailability(false);
+                list.add(book);
+            }
+            System.out.println(book.getName() + " book borrowed.");
+        }
+        else{
+            int index = getBookIndex(list,book);
+            if(index>-1) {
+                bookList.get(getBookIndex(bookList, book)).setAvailability(true);
+                list.remove(index);
+                System.out.println(book.getName() + " book returned.");
+            }
+        }
 
         for(int i=0; i<list.size(); ++i){
-            //  System.out.println(bookList.get(i).toString());
-            list.get(i).setId(i);
+            list.get(i).setId(list.get(i).getId());
             writer.println(list.get(i).toString());
-            System.out.println(list.get(i).toString());
         }
         writer.close();
     }
+    private int getBookIndex(ArrayList <Book> list, Book book){
+        for (int i=0 ;i<list.size(); ++i)
+            if(list.get(i).equals(book)){
+                return i;
+            }
+        return -1;
+    }
+    private Book getBookFromID(int id, ArrayList <Book> list){
+        for (int i=0 ;i<list.size(); ++i)
+            if(list.get(i).getId() == id){
+                return list.get(i);
+            }
+        return null;
+    }
+
+
 }

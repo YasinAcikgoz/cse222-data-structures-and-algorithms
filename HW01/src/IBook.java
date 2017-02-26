@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 /**
  *
+ * book interface
  *
- * Created by yacikgoz on 22.02.2017.
  */
 public interface IBook {
     /**
@@ -29,7 +29,7 @@ public interface IBook {
      * @return kitap listesi
      * @throws IOException exception
      */
-    ArrayList <Book>  barrowBook(int bookID, int userID) throws IOException;
+    ArrayList <Book> borrowBook(int bookID, int userID) throws IOException;
 
     /**
      * libraryUser'in aldigi kitabi geri vermesini saglayan method

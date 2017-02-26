@@ -1,6 +1,9 @@
+import java.util.Objects;
+
 /**
+ *
  * Kitap bilgilerinin ve methodlarinin bulundugu sinif
- * Created by yacikgoz on 22.02.2017.
+ *
  */
 
 public class Book{
@@ -105,5 +108,9 @@ public class Book{
         } else
             temp += " -> Not Available";
         return temp;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.toString(), obj.toString());
     }
 }

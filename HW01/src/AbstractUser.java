@@ -2,8 +2,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * abstract user class
- * Created by yacikgoz on 24.02.2017.
+ *
+ * kullaniciya ait metodlarin bulundugu abstract user sinifi
+ *
  */
 public abstract class AbstractUser {
     protected String name;
@@ -70,14 +71,17 @@ public abstract class AbstractUser {
      * @throws IOException exception
      */
     protected void writeBooks(ArrayList <Book> list) throws IOException {
-        String booksFile = "src/data/Books.csv";
-        PrintWriter writer = new PrintWriter(new FileWriter(booksFile));
-
-        for(int i=0; i<list.size(); ++i){
-            list.get(i).setId(i);
-            writer.println(list.get(i).toString());
+        try {
+            String booksFile = "src/data/Books.csv";
+            PrintWriter writer = new PrintWriter(new FileWriter(booksFile));
+            for(int i=0; i<list.size(); ++i){
+                list.get(i).setId(list.get(i).getId());
+                writer.println(list.get(i).toString());
+            }
+            writer.close();
+        }catch (IOException e) {
+            e.printStackTrace();
         }
-        writer.close();
     }
 
     /**
@@ -85,14 +89,17 @@ public abstract class AbstractUser {
      * @param list user listesi
      * @throws IOException exception
      */
-    protected void writeUsers(ArrayList <User> list) throws IOException {
-        String usersFile = "src/data/Users.csv";
-        PrintWriter writer = new PrintWriter(new FileWriter(usersFile));
-        for(int i=0; i<list.size(); ++i){
-            list.get(i).setId(i);
-            writer.println(list.get(i).toString());
+    protected void writeUsers(ArrayList <User> list, boolean status) throws IOException {
+        try {
+            String usersFile = "src/data/Users.csv";
+            PrintWriter writer = new PrintWriter(new FileWriter(usersFile));
+            for(int i=0; i<list.size(); ++i)
+                writer.println(list.get(i).toString());
+
+            writer.close();
+        }catch (IOException e) {
+            e.printStackTrace();
         }
-        writer.close();
     }
 
     /**
@@ -107,14 +114,10 @@ public abstract class AbstractUser {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
-            int id = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 String [] temp = line.split(";");
                 User tempUser = new User(temp[0], temp[1], temp[2], temp[3], Integer.parseInt(temp[4]));
-                // ++id;
-                // tempUser.setId(id);
                 list.add(tempUser);
-                System.out.println(tempUser.toString());
             }
             fileReader.close();
         } catch (IOException e) {
@@ -138,8 +141,6 @@ public abstract class AbstractUser {
 
         File f = new File(fileName);
         if(f.exists() && !f.isDirectory()) {
-            // do something
-
             try {
                 File file = new File(fileName);
                 FileReader fileReader = new FileReader(file);
@@ -148,11 +149,9 @@ public abstract class AbstractUser {
                 int id = 0;
                 while ((line = bufferedReader.readLine()) != null) {
                     String [] temp = line.split(";");
-
                     Book tempBook = new Book(temp[0], temp[1], Boolean.parseBoolean(temp[3]));
-                    System.out.println("tempbook: " + tempBook.toString() + " bool: " + temp[3]);
-                    tempBook.setId(id);
-                    ++id;
+                    tempBook.setId(Integer.parseInt(temp[2]));
+
                     list.add(tempBook);
                 }
                 fileReader.close();
@@ -162,7 +161,6 @@ public abstract class AbstractUser {
         } else {
             return null;
         }
-
         return list;
     }
 
@@ -174,12 +172,11 @@ public abstract class AbstractUser {
      */
     protected Book checkBookId(int id, ArrayList<Book> list){
         for(int i=0; i<list.size(); ++i){
-            System.out.println("idnum: " + list.get(i).getId());
             if(list.get(i).getId()==id){
-                System.out.println("delete: " + list.get(i).toString());
                 return list.get(i);
             }
         }
         return null;
     }
+
 }

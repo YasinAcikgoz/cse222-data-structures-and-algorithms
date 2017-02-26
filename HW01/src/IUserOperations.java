@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * user operations interface
- * Created by yacikgoz on 24.02.2017.
+ *
  */
 public interface IUserOperations {
     /**
