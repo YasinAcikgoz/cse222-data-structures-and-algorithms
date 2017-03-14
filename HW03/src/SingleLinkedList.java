@@ -4,56 +4,119 @@ import java.util.*;
  * Single Linked List implementation
  * Created by yacikgoz on 10.03.2017.
  */
-public class SingleLinkedList <E> extends AbstractList<E>{
+public class SingleLinkedList <E> extends LinkedList{
     private Node<E> head = null;
     private int size;
 
+    /**
+     * Node Class
+     * @param <E> generic object
+     */
     private static class Node<E>{
         E data;
         Node<E> next;
+        /**
+         * Node constructor
+         * @param item node.data
+         */
         private Node(E item){
             data = item;
             next = null;
         }
-        private Node(E item, Node<E> nodeRef){
-            data = item;
-            next = nodeRef;
+
+        /**
+         * toString metod
+         * @return string
+         */
+        @Override
+        public String toString() {
+            return data.toString();
         }
+
     }
 
-    private class SingleLinkedListIterator implements Iterator<E> {
+    /**
+     * SingleLinkedList iterator return eden metod
+     * @return iterator
+     */
+    public Iterator<E> Iterator() {
+        SingleLinkedListIterator singleLinkedListIterator = new SingleLinkedListIterator();
+        return singleLinkedListIterator;
+
+    }
+    /**
+     * Head node'u verilen char LinkedList'ini reverse eden metod
+     * @param node head node
+     * @return node
+     */
+    public static Node reverseToString(Node node){
+        if (node == null || node.next == null)
+            return node;
+
+        Node left = reverseToString(node.next);
+        /*
+        * recursion'dan donerken node ilerideki
+        * node ile gerideki node arasindaki
+        * baglantiyi ters cevirir
+        * */
+
+        node.next.next = node;
+        /*
+        * gerideki node ile onundeki node
+        * arasindaki baglantiyi yok eder
+        * */
+        node.next = null;
+        return left;
+    }
+
+    /**
+     * SingleLinkedListIterator class
+     * implements Iterator
+     */
+    private class SingleLinkedListIterator implements Iterator<E>{
         private Node<E> nextNode;
 
+        /**
+         * constructor
+         */
         public SingleLinkedListIterator() {
             nextNode = head;
         }
 
+        /**
+         * check has next item is exists
+         * @return true if exists, false otherwise
+         */
         public boolean hasNext() {
             return nextNode != null;
         }
 
+        /**
+         * get SingleLinkedList's next item
+         * @return next node's data
+         */
         public E next() {
             if (!hasNext()) throw new NoSuchElementException();
             E res = nextNode.data;
             nextNode = nextNode.next;
             return res;
         }
+
+        /**
+         * ReuseDeletedNodes class'i icin kullanilan remove metodu
+         */
+        @Override
+        public void remove() {
+            nextNode.data = null;
+            nextNode = nextNode.next;
+        }
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    private void addAfter(Node<E> node, E item){
-        node.next = new Node<E>(item, node.next);
-        ++size;
-    }
-    public void addFirst(E item){
-        head = new Node<E>(item, head);
-        ++size;
-    }
-
+    /**
+     * get node from index
+     * @param index node index
+     * @return node
+     */
     private Node<E> getNode(int index){
         Node<E> node = head;
         for(int i=0; i<index && node!=null; ++i){
@@ -61,12 +124,20 @@ public class SingleLinkedList <E> extends AbstractList<E>{
         }
         return node;
     }
-    @Override
+
+    /**
+     * get linkedlist size
+     * @return size
+     */
     public int size() {
         return size;
     }
 
-    @Override
+    /**
+     * get linked list element
+     * @param index element index
+     * @return generic type
+     */
     public E get(int index) {
         if(index<0 || index>=size){
             throw new IndexOutOfBoundsException();
@@ -75,129 +146,110 @@ public class SingleLinkedList <E> extends AbstractList<E>{
         return node.data;
     }
 
-    @Override
-    public E set(int index, E element) {
-        if(index<0 || index>=size){
-            throw new IndexOutOfBoundsException();
+    /**
+     * add element to linked list
+     * @param index index value to element add
+     * @param element eklenecek element
+     */
+    public void add(int index, E element) {
+        Node temp = new Node(element);
+        Node curr = head;
+        if (index == 0){
+            temp.next=head;
+            this.head = temp;
+        } else{
+            for(int i = 1; i < index; i++){
+                curr = curr.next;
+            }
+            temp.next = curr.next;
+            curr.next = temp;
         }
-        Node<E> node = getNode(index);
-        E data = node.data;
-        node.data = element;
-        return data;
+        this.size++;
     }
 
-    @Override
-    public void add(int index, E element) {
-        if(index<0 && index>=size){
-            throw new IndexOutOfBoundsException();
-        } else if(index == 0){
-            addFirst(element);
-        } else{
-            Node<E> node = getNode(index);
-            addAfter(node, element);
-        }
-    }
-    @Override
-    public boolean add(E e) {
+    /**
+     * linked listin sonuna eleman ekleyen metod.
+     * @param e eleman
+     * @return true
+     */
+ /*   public boolean add(E e) {
         add(size, e);
         return true;
+    }*/
+
+    /**
+     * reverse toString wrapper metod
+     */
+    public void reverseToString(){
+        SingleLinkedList<Object> list = new SingleLinkedList<>();
+        Node node;
+        list.head = new Node<>('y');
+        list.head.next = new Node<>('a');
+        list.head.next.next = new Node<>('s');
+        list.head.next.next.next = new Node<>('i');
+        list.head.next.next.next.next = new Node<>('n');
+        list.head.next.next.next.next.next = new Node<>('a');
+        list.head.next.next.next.next.next.next = new Node<>('c');
+        list.head.next.next.next.next.next.next.next  = new Node<>('i');
+        list.head.next.next.next.next.next.next.next.next  = new Node<>('k');
+        list.head.next.next.next.next.next.next.next.next.next  = new Node<>('g');
+        list.head.next.next.next.next.next.next.next.next.next.next  = new Node<>('o');
+        list.head.next.next.next.next.next.next.next.next.next.next.next = new Node<>('z');
+        System.out.println("\nCharacter SingleLinkedList before reverseToString() call");
+        print(list.head);
+        System.out.println("\n");
+        node = reverseToString(list.head);
+        System.out.println("Character SingleLinkedList after reverseToString() call");
+        print(node);
+
+        SingleLinkedList<Object> list2 = new SingleLinkedList<>();
+        list2.head = new Node<>("yasin");
+        list2.head.next = new Node<>("acikgoz");
+
+        System.out.println("\n\nString SingleLinkedList before reverseToString() call");
+        print(list2.head);
+        System.out.println("\n");
+        node = reverseToString(list2.head);
+        System.out.println("String SingleLinkedList after reverseToString() call");
+        print(node);
+        SingleLinkedList<Object> list3 = new SingleLinkedList<>();
+        list3.head = new Node<>(1);
+        list3.head.next = new Node<>(9);
+        list3.head.next.next = new Node<>(0);
+        list3.head.next.next.next = new Node<>(5);
+        System.out.println("\n\nInteger SingleLinkedList before reverseToString() call");
+        print(list3.head);
+        System.out.println("\n");
+        node = reverseToString(list3.head);
+        System.out.println("Integer SingleLinkedList after reverseToString() call");
+        print(node);
+        System.out.println("\n");
     }
 
-    @Override
-    public E remove(int index) {
-        return null;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new SingleLinkedListIterator();
-    }
-
-    @Override
-    public Object[] toArray() {
-        Object[] r = new Object[size()];
-        Iterator<E> it = iterator();
-        for (int i = 0; i < r.length; i++) {
-            if (! it.hasNext()) // fewer elements than expected
-                return Arrays.copyOf(r, i);
-            r[i] = it.next();
+    /**
+     * print nodes
+     * @param node head node
+     */
+    public void print(Node<Object> node) {
+        if(node!= null) {
+            System.out.print(node.toString());
+            print(node.next);
         }
-        return r;
     }
 
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
-
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public ListIterator<E> listIterator() {
-        return null;
-    }
-
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        return null;
-    }
-
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return null;
-    }
+    /**
+     * toString override
+     * @return string
+     */
+ /*   @Override
+    public String toString() {
+        String temp = "[";
+        Iterator <E> eIterator = new SingleLinkedListIterator();
+        while (eIterator.hasNext()){
+            Object object = eIterator.next();
+            if(object!=null)
+                temp += object.toString() + ", ";
+        }
+        return temp + "]";
+    }*/
 }

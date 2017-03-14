@@ -1,69 +1,76 @@
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
  * Created by yacikgoz on 10.03.2017.
  */
 public class Main{
-    private static long start, end;
-    public static void main(String [] args){
-        SingleLinkedList<Object> list = new SingleLinkedList<>();
-        StringBuilder sb = new StringBuilder();
-        sb.append("yasin");
-        sb.append("acikgoz");
-        System.out.println(sb.toString());
-       /* for(int i=0; i<500; ++i){
-            linkedList.addFirst(i);
-        }*/
-
-       /* for(int i =0 ; i<10000; ++i)
-            linkedList.addFirst("y");*/
-       for (int i = 0; i<3; ++i){
-           if(i%2==0)
-               list.addFirst(true);
-           else
-               list.addFirst(false);
-       }
-       list.addFirst("str");
-        list.addFirst(465);
+    private final static int MAX = 10000;
+    public static void main(String [] args) throws IOException {
+        /****************************PART 1**************************************/
+      /*  fillFile();
         MyStringBuilder<Object> myStringBuilder = new MyStringBuilder<>();
-   /*     start = System.currentTimeMillis();
-        System.out.println("toString1");
-        stringBuilder.toString1();
-        end  = System.currentTimeMillis();
-        System.out.print("Execution time is " + getRunningTime(start, end)+ " seconds\n");*/
+        System.out.println(myStringBuilder.toString1());
+        System.out.println(myStringBuilder.toString2());
+        System.out.println(myStringBuilder.toString3());*/
 
-        start = System.currentTimeMillis();
-        System.out.println("toString1");
-        System.out.println(myStringBuilder.toString1(list));
-      //  myStringBuilder.toString1(list);
-        end  = System.currentTimeMillis();
-        System.out.print("Execution time is " + getRunningTime(start, end)+ " seconds\n");
+        //System.out.println("/****************************PART 2***************************************/");
+        SingleLinkedList linkedList = new SingleLinkedList();
+        linkedList.reverseToString();
 
+        /****************************PART 3**************************************/
+      /*  MyAbstractCollection<LinkedList> col1 = new MyAbstractCollection<>();
+        MyAbstractCollection<ArrayList> col2 = new MyAbstractCollection<>();
+        LinkedList<Object> linkedList = new LinkedList<>();
+        ArrayList<Object> arrayList = new ArrayList<>();*/
 
+        /****************************PART 4**************************************/
+  //      ReuseDeletedNodes<Integer> list = new ReuseDeletedNodes<>();
+     /*   list.add(5);
+        list.add(15);
+        list.add(25);
+        list.add(35);
+        list.add(45);
+        System.out.println("list: " + list.toString());
+        System.out.println("deletedlist: " + list.deletedToString());
+        list.delete(15);
+        list.delete(35);
+        list.add(56);
+        list.add(17);
+        list.add(19);
+        System.out.println("deletedlist: " + list.deletedToString());
+        System.out.println("list: " + list.toString());*/
+     /*   for(int i=0; i<=100; ++i)
+            list.add(i);
 
+        System.out.println("List (0-100)\n" + list.toString());
+        for(int i=50; i<=100; ++i){
+            list.delete(i);
+        }
+        System.out.println("List After Deleting (50-100)\n" + list.toString());
+        System.out.println("Deleted Node List (50-100)\n" + list.deletedToString());
+        for(int i=100; i<=150; ++i) {
+            list.add(i);
+        }
+        System.out.println("List After Inserting (0-50) - (100-150) (\n" + list.toString());
+        System.out.println("Deleted Node List\n" + list.deletedToString());*/
     }
-    private static String getRunningTime(long start, long end){
-        long total = end - start;
-        NumberFormat formatter = new DecimalFormat("#0.00000");
-        return formatter.format((total) / 1000d);
-    }
+
+    /**
+     * input.txt dosyasini integer degerlerle doldur
+     */
     private static void fillFile(){
         try{
-            PrintWriter writer = new PrintWriter("the-file-name.txt");
-            writer.println("The first line");
-            writer.println("The second line");
+            PrintWriter writer = new PrintWriter("src/input.txt");
+            for (int i = 0; i<MAX; ++i){
+                writer.println(i);
+            }
             writer.close();
         } catch (IOException e) {
             // do something
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         }
     }
 
