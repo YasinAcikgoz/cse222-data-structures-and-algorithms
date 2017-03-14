@@ -84,6 +84,6 @@ public class ReuseDeletedNodes <E>{
      */
     @Override
     public String toString() {
-        return list.toString();
+        return list.myToString();
     }
 }

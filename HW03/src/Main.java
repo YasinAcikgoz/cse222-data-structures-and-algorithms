@@ -8,18 +8,18 @@ import java.util.LinkedList;
  * Created by yacikgoz on 10.03.2017.
  */
 public class Main{
-    private final static int MAX = 10000;
+    private final static int MAX = 100000;
     public static void main(String [] args) throws IOException {
         /****************************PART 1**************************************/
-      /*  fillFile();
+        fillFile();
         MyStringBuilder<Object> myStringBuilder = new MyStringBuilder<>();
         System.out.println(myStringBuilder.toString1());
         System.out.println(myStringBuilder.toString2());
-        System.out.println(myStringBuilder.toString3());*/
+        System.out.println(myStringBuilder.toString3());
 
         //System.out.println("/****************************PART 2***************************************/");
-        SingleLinkedList linkedList = new SingleLinkedList();
-        linkedList.reverseToString();
+       // SingleLinkedList linkedList = new SingleLinkedList();
+      //  linkedList.reverseToString();
 
         /****************************PART 3**************************************/
       /*  MyAbstractCollection<LinkedList> col1 = new MyAbstractCollection<>();

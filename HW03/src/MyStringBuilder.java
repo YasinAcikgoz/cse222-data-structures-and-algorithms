@@ -224,7 +224,8 @@ public class MyStringBuilder <E>{
         start = System.currentTimeMillis();
         try{
             PrintWriter writer = new PrintWriter("src/result3.txt");
-            writer.print(chars.toString());
+            writer.print(lltoString());
+            writer.close();
         } catch (IOException e) {
             // do something
         }
@@ -260,6 +261,27 @@ public class MyStringBuilder <E>{
             e.printStackTrace();
         } finally {
             br.close();
+        }
+    }
+
+    /**
+     * linked list sinifina ait toString metodu
+     * @return string
+     */
+    private String lltoString(){
+        Iterator<Character> it = chars.Iterator();
+        if (! it.hasNext())
+            return "[]";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        for (;;) {
+            Character e = it.next();
+            sb.append(e);
+            if (!it.hasNext()){
+                return sb.append(']').toString();
+            }
+            sb.append(',').append(' ');
         }
     }
 }

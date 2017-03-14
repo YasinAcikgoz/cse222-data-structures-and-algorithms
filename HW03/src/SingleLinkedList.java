@@ -4,7 +4,7 @@ import java.util.*;
  * Single Linked List implementation
  * Created by yacikgoz on 10.03.2017.
  */
-public class SingleLinkedList <E>{
+public class SingleLinkedList <E> extends LinkedList<E>{
     private Node<E> head = null;
     private int size;
 
@@ -238,11 +238,10 @@ public class SingleLinkedList <E>{
     }
 
     /**
-     * toString override
+     * myToString metodu
      * @return string
      */
-    @Override
-    public String toString() {
+    public String myToString() {
         String temp = "[";
         Iterator <E> eIterator = new SingleLinkedListIterator();
         while (eIterator.hasNext()){
