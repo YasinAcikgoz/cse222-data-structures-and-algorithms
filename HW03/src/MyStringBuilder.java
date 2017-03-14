@@ -181,7 +181,7 @@ public class MyStringBuilder <E>{
                 writer.print(chars.get(i));
             writer.close();
         } catch (IOException e) {
-            // do something
+            e.printStackTrace();
         }
         end  = System.currentTimeMillis();
         return "Execution time is " + getRunningTime(start, end)+ " seconds for toString1() method.\n";
@@ -206,7 +206,7 @@ public class MyStringBuilder <E>{
             }
             writer.close();
         } catch (IOException e) {
-            // do something
+            e.printStackTrace();
         }
         end  = System.currentTimeMillis();
         return "Execution time is " + getRunningTime(start, end)+ " seconds for toString2() method.\n";
@@ -227,7 +227,7 @@ public class MyStringBuilder <E>{
             writer.print(lltoString());
             writer.close();
         } catch (IOException e) {
-            // do something
+            e.printStackTrace();
         }
         end  = System.currentTimeMillis();
         return "Execution time is " + getRunningTime(start, end)+ " seconds for toString3() method.\n";

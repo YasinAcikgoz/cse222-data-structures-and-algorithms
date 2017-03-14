@@ -86,4 +86,12 @@ public class ReuseDeletedNodes <E>{
     public String toString() {
         return list.myToString();
     }
+    public String deletedToString(){
+        String temp = "[";
+        for (int i=0; i<deletedNodes.size(); ++i){
+            temp+=deletedNodes.get(i).data.toString()+ ", ";
+        }
+        return  temp+"]";
+    }
+
 }

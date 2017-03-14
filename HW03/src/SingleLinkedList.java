@@ -49,13 +49,13 @@ public class SingleLinkedList <E> extends LinkedList<E>{
      * @param node head node
      * @return node
      */
-    public static Node reverseToString(Node node){
+    private Node reverseToString(Node node){
         if (node == null || node.next == null)
             return node;
 
-        Node left = reverseToString(node.next);
+        Node leftNode = reverseToString(node.next);
         /*
-        * recursion'dan donerken node ilerideki
+        * recursion'dan donerken ilerideki
         * node ile gerideki node arasindaki
         * baglantiyi ters cevirir
         * */
@@ -66,7 +66,7 @@ public class SingleLinkedList <E> extends LinkedList<E>{
         * arasindaki baglantiyi yok eder
         * */
         node.next = null;
-        return left;
+        return leftNode;
     }
 
     /**
@@ -197,7 +197,7 @@ public class SingleLinkedList <E> extends LinkedList<E>{
         list.head.next.next.next.next.next.next.next.next.next.next.next = new Node<>('z');
         System.out.println("\nCharacter SingleLinkedList before reverseToString() call");
         print(list.head);
-        System.out.println("\n");
+        System.out.println();
         node = reverseToString(list.head);
         System.out.println("Character SingleLinkedList after reverseToString() call");
         print(node);
@@ -208,7 +208,7 @@ public class SingleLinkedList <E> extends LinkedList<E>{
 
         System.out.println("\n\nString SingleLinkedList before reverseToString() call");
         print(list2.head);
-        System.out.println("\n");
+        System.out.println();
         node = reverseToString(list2.head);
         System.out.println("String SingleLinkedList after reverseToString() call");
         print(node);
@@ -219,11 +219,11 @@ public class SingleLinkedList <E> extends LinkedList<E>{
         list3.head.next.next.next = new Node<>(5);
         System.out.println("\n\nInteger SingleLinkedList before reverseToString() call");
         print(list3.head);
-        System.out.println("\n");
+        System.out.println();
         node = reverseToString(list3.head);
         System.out.println("Integer SingleLinkedList after reverseToString() call");
         print(node);
-        System.out.println("\n");
+        System.out.println();
     }
 
     /**
