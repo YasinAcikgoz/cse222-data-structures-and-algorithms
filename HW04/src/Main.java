@@ -22,7 +22,7 @@ public class Main {
         writeFile();
     }
     /**
-     * read test.csv file
+     * read test2.csv file
      */
     protected static void readQueue(MyQueue myQueue) {
         String fileName = "src/test.csv";
@@ -53,7 +53,7 @@ public class Main {
         }
     }
     /**
-     * read test.csv file
+     * read test2.csv file
      */
     protected static void readFile() {
         String fileName = "src/test.csv";
@@ -173,7 +173,7 @@ public class Main {
             while(!queue.isEmpty())
                 writer2.print(queue.poll() + ", ");
             writer2.println();
-
+            //ayni queue'yu yeniden dosyadan oku
             MyQueue<Object> temp = new MyQueue<>();
             readQueue(temp);
             temp.reverse();
