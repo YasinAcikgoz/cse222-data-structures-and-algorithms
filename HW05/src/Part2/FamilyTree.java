@@ -17,8 +17,8 @@ public class FamilyTree extends BinaryTree<Person> {
      */
     public boolean add(String name, String parentName, String nickName){
         // person objesi oluştur
+
         Person newPerson = new Person(name, parentName, nickName);
-        System.out.println("person -> " + newPerson.getName());
         //personin olup olmadigini check et
         if(checkPerson(newPerson, root))
             return addToTree(root, newPerson);
