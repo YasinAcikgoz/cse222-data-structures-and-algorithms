@@ -9,7 +9,6 @@ import java.util.Queue;
  * Created by yacikgoz on 6.04.2017.
  */
 public class BinarySearchTree <E extends Comparable <E>> extends BinaryTree<E> {
-
     /**
      * Binary Tree preorder iterator
      * @return preorder iterator
@@ -42,14 +41,11 @@ public class BinarySearchTree <E extends Comparable <E>> extends BinaryTree<E> {
         void levelOrderTraverse (Node root){
             tempQueue.offer(root);
             while (!tempQueue.isEmpty()){
-
                 Node tempNode = tempQueue.poll();
                 if (tempNode.left != null)
                     tempQueue.offer(tempNode.left);
-
                 if (tempNode.right != null)
                     tempQueue.offer(tempNode.right);
-
                 nodes.offer(tempNode);
             }
         }
