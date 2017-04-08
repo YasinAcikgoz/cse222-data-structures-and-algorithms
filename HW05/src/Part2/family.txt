@@ -1,0 +1,4 @@
+Hasan
+Ayşe,Hasan,Ebu-Ayşe
+Ali,Ayşe,İbn-Hasan
+Sema,Hasan,Ebu-Ayşe
