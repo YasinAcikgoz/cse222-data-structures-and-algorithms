@@ -1,3 +1,5 @@
+package Part2;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.Serializable;
@@ -31,10 +33,15 @@ public class HuffmanTree implements Serializable {
         }
 
         public Character getSymbol() {return symbol;}
+
+        @Override
+        public String toString() {
+            return "symbol: " + symbol + " weight "  + weight;
+        }
     }
     // Data Fields
     /** A reference to the completed Huffman tree. */
-    protected BinaryTree<HuffData> huffTree;
+    public BinaryTree<HuffData> huffTree;
 
     /** A Comparator for Huffman trees; nested class. */
     private static class CompareHuffmanTrees
@@ -141,7 +148,6 @@ public class HuffmanTree implements Serializable {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         this.printCode(ps);
-        //Htree.printCode(ps);
 
         try {
             encodedCodes = os.toString("UTF8");
