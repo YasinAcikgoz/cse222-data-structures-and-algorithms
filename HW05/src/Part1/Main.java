@@ -24,6 +24,10 @@ public class Main {
         System.out.println("\nlevel order traverse");
         while (BSTIter.hasNext())
             System.out.print(BSTIter.next()  +" ");
+
+        System.out.println("result: " + BSTree.min(BSTree.root, 4));
+
+
     }
 
     /**

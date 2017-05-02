@@ -1,4 +1,5 @@
 /**
+ *
  * Created by syucer on 4/24/2017.
  */
 import java.util.*;
@@ -6,10 +7,85 @@ import java.util.*;
 public class BinaryNavMap<K,V> extends AbstractMap<K,V>
         implements NavigableMap<K,V>, Cloneable, java.io.Serializable
 {
+    /**
+     *
+     * binaryNavMap implement etmek icin delegation yapian binary search tree objesi
+     *
+     */
+    private BinarySearchTree<Entry<K,V>> binarySearchTree = new BinarySearchTree<>();
 
-
+    /**
+     * put metodu
+     * @param key key
+     * @param value value
+     * @return tabloya eklenen deger
+     */
     @Override
-    public Set<Entry<K, V>> entrySet() {
+    public V put(K key, V value) {
+        Entry <K,V> newEntry = new Entry<K, V>(key,value);
+        if(binarySearchTree.add(newEntry))
+            return newEntry.value;
+        else
+            return null;
+    }
+    public static class Entry<K,V> implements Map.Entry<K,V>, Comparable<Entry<K, V>> {
+        private K key;
+        private V value;
+
+        /**
+         * Make a new cell with given key, value, and parent, and with
+         * {@code null} child links, and BLACK color.
+         */
+        Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        /**
+         * Returns the key.
+         *
+         * @return the key
+         */
+        public K getKey() {
+            return key;
+        }
+
+        /**
+         * Returns the value associated with the key.
+         *
+         * @return the value associated with the key
+         */
+        public V getValue() {
+            return value;
+        }
+
+        /**
+         * Replaces the value currently associated with the key with the given
+         * value.
+         *
+         * @return the value associated with the key before this method was
+         *         called
+         */
+        public V setValue(V value) {
+            V oldValue = this.value;
+            this.value = value;
+            return oldValue;
+        }
+
+
+        public String toString() {
+            return key + "=" + value;
+        }
+
+        @Override
+        public int compareTo(Entry<K, V> o) {
+            String k2 = o.key.toString();
+            String k1 = this.key.toString();
+            return k1.compareTo(k2);
+        }
+    }
+    @Override
+    public Set<NavigableMap.Entry<K, V>> entrySet() {
         return null;
     }
 
@@ -162,7 +238,11 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      */
     @Override
     public Entry<K, V> firstEntry() {
-        return null;
+        BinarySearchTree<Entry<K,V>> temp = new BinarySearchTree<>();
+        temp.root = binarySearchTree.root;
+        while(temp.root.left!=null)
+            temp.root = temp.root.getLeft();
+        return new Entry<>(temp.root.data.getKey(), temp.root.data.getValue());
     }
 
     /**
@@ -174,7 +254,11 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      */
     @Override
     public Entry<K, V> lastEntry() {
-        return null;
+        BinarySearchTree<Entry<K,V>> temp = new BinarySearchTree<>();
+        temp.root = binarySearchTree.root;
+        while(temp.root.right!=null)
+            temp.root = temp.root.getRight();
+        return new Entry<>(temp.root.data.getKey(), temp.root.data.getValue());
     }
 
     /**
@@ -208,9 +292,6 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      * modified while an iteration over a collection view of either map
      * is in progress (except through the iterator's own {@code remove}
      * operation), the results of the iteration are undefined.
-     * <p>
-     * <p>The returned map has an ordering equivalent to
-     * <tt>{@link Collections#reverseOrder(Comparator) Collections.reverseOrder}(comparator())</tt>.
      * The expression {@code m.descendingMap().descendingMap()} returns a
      * view of {@code m} essentially equivalent to {@code m}.
      *
@@ -257,6 +338,7 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
     @Override
     public NavigableSet<K> descendingKeySet() {
         return null;
+
     }
 
     /**
@@ -267,10 +349,6 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      * returned map is backed by this map, so changes in the returned map are
      * reflected in this map, and vice-versa.  The returned map supports all
      * optional map operations that this map supports.
-     * <p>
-     * <p>The returned map will throw an {@code IllegalArgumentException}
-     * on an attempt to insert a key outside of its range, or to construct a
-     * submap either of whose endpoints lie outside its range.
      *
      * @param fromKey       low endpoint of the keys in the returned map
      * @param fromInclusive {@code true} if the low endpoint
@@ -304,9 +382,6 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      * map is backed by this map, so changes in the returned map are reflected
      * in this map, and vice-versa.  The returned map supports all optional
      * map operations that this map supports.
-     * <p>
-     * <p>The returned map will throw an {@code IllegalArgumentException}
-     * on an attempt to insert a key outside its range.
      *
      * @param toKey     high endpoint of the keys in the returned map
      * @param inclusive {@code true} if the high endpoint
@@ -336,9 +411,6 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      * map is backed by this map, so changes in the returned map are reflected
      * in this map, and vice-versa.  The returned map supports all optional
      * map operations that this map supports.
-     * <p>
-     * <p>The returned map will throw an {@code IllegalArgumentException}
-     * on an attempt to insert a key outside its range.
      *
      * @param fromKey   low endpoint of the keys in the returned map
      * @param inclusive {@code true} if the low endpoint
@@ -373,16 +445,18 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      */
     @Override
     public Comparator<? super K> comparator() {
-        return null;
+        return new Comparator<K>() {
+            @Override
+            public int compare(K o1, K o2) {
+                return o1.toString().compareTo(o2.toString());
+            }
+        };
     }
 
     /**
      * {@inheritDoc}
-     * <p>
-     * <p>Equivalent to {@code subMap(fromKey, true, toKey, false)}.
-     *
-     * @param fromKey
-     * @param toKey
+     * @param fromKey from key
+     * @param toKey to key
      * @throws ClassCastException       {@inheritDoc}
      * @throws NullPointerException     {@inheritDoc}
      * @throws IllegalArgumentException {@inheritDoc}
@@ -394,10 +468,7 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
 
     /**
      * {@inheritDoc}
-     * <p>
-     * <p>Equivalent to {@code headMap(toKey, false)}.
-     *
-     * @param toKey
+     * @param toKey key
      * @throws ClassCastException       {@inheritDoc}
      * @throws NullPointerException     {@inheritDoc}
      * @throws IllegalArgumentException {@inheritDoc}
@@ -409,10 +480,7 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
 
     /**
      * {@inheritDoc}
-     * <p>
-     * <p>Equivalent to {@code tailMap(fromKey, true)}.
-     *
-     * @param fromKey
+     * @param fromKey from key
      * @throws ClassCastException       {@inheritDoc}
      * @throws NullPointerException     {@inheritDoc}
      * @throws IllegalArgumentException {@inheritDoc}
@@ -430,7 +498,11 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      */
     @Override
     public K firstKey() {
-        return null;
+        BinarySearchTree<Entry<K,V>> temp = new BinarySearchTree<>();
+        temp.root = binarySearchTree.root;
+        while(temp.root.left!=null)
+            temp.root = temp.root.getLeft();
+        return temp.root.data.getKey();
     }
 
     /**
@@ -441,6 +513,20 @@ public class BinaryNavMap<K,V> extends AbstractMap<K,V>
      */
     @Override
     public K lastKey() {
-        return null;
+        BinarySearchTree<Entry<K,V>> temp = new BinarySearchTree<>();
+        temp.root = binarySearchTree.root;
+        while(temp.root.right!=null)
+            temp.root = temp.root.getRight();
+        return temp.root.data.getKey();
     }
+
+    /**
+     * toString metod
+     * @return string
+     */
+    @Override
+    public String toString() {
+        return binarySearchTree.toString();
+    }
+
 }

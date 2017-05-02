@@ -1,5 +1,7 @@
 
+import java.util.Map;
 import java.util.NavigableMap;
+import java.util.TreeMap;
 
 
 public class Main
@@ -14,7 +16,8 @@ public class Main
     }
     public static Boolean Q1Test(){
 
-        NavigableMap<String,String> turkey = new BinaryNavMap<String,String>();
+        NavigableMap<String,String> turkey = new BinaryNavMap<>();
+        System.out.println("\n----------- PART 1 -----------------\n");
         turkey.put("uskudar","istanbul");
         turkey.put("kadıkoy","istanbul");
         turkey.put("cekirge","bursa");
@@ -27,31 +30,25 @@ public class Main
         turkey.put("kahta","adıyaman");
         turkey.put("biga","canakkale");
 
-        System.out.println("The original set odds is " + turkey);
-        NavigableMap<String,String> m = turkey.subMap("uskudar",true,"gebze",false);
-        System.out.println("The ordered set m is " + m);
-        System.out.println("The first entry is " +turkey.firstEntry());
 
-        //you should write more test function to show your solution
-        //your test must contain all methods to get full points!!!
-        //you also may need to owerwrite some methods to provide BST RULES
+        System.out.println("The original set odds is " + turkey.toString());
+        System.out.println("The first key is " + turkey.firstKey());
+        System.out.println("The last key is " + turkey.lastKey());
+        System.out.println("The first entry is " + turkey.firstEntry());
+        System.out.println("The last entry is " + turkey.lastEntry());
 
-        /* *some links to help you
-
-           https://docs.oracle.com/javase/8/docs/api/java/util/NavigableMap.html
-           https://docs.oracle.com/javase/8/docs/api/java/util/AbstractMap.html
-
-        * */
         return Boolean.TRUE;
 
     }
     public static Boolean Q2Test(){
         HashMap<String,String> turkey=new HashTableChaining<String,String>();
+        System.out.println("\n----------- PART 2 -----------------\n");
+        System.out.println("isEmpty: " + turkey.isEmpty());
         turkey.put("edremit","balikesir");
         turkey.put("edremit","van");
         turkey.put("kemalpasa","bursa");
         turkey.put("kemalpasa","izmir");
-        turkey.put("ortakoy","istanbul");//we assume a district
+        turkey.put("ortakoy","istanbul"); //we assume a district
         turkey.put("ortakoy","aksaray");
         turkey.put("ortakoy","corum");
         turkey.put("kecıoren","ankara");
@@ -64,18 +61,10 @@ public class Main
         turkey.put("golbasi","ankara");
         turkey.put("biga","canakkale");
 
-        /* *test all
-
-            V get(Object key);
-
-            V put(K key, V value);
-
-            V remove(Object key);
-
-            int size();
-
-        * */
-
+        System.out.println("size: " + turkey.size());
+        System.out.println("remove: " + turkey.remove("eregli"));
+        System.out.println("isEmpty: " + turkey.isEmpty());
+        System.out.println("size: " + turkey.size());
 
         return Boolean.TRUE;
     }

@@ -68,4 +68,15 @@ public class BinarySearchTree <E extends Comparable <E>> extends BinaryTree<E> {
             return  node.data;
         }
     }
+    public int min(Node<E> localRoot, E item){
+        if(localRoot==null)
+            return 0;
+        int compRes = item.compareTo(localRoot.data);
+        if(compRes == 0)
+            return 1;
+        else if(compRes<0)
+            return min(localRoot.left, item);
+        else
+            return min(localRoot.right, item);
+    }
 }
